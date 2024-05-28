@@ -24,5 +24,6 @@
 
     <modules>
         <module>product-management-solution</module>
+        <module>product-management-core</module>
     </modules>
 </project>
