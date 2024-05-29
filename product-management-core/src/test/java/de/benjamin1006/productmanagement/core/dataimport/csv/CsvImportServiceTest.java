@@ -91,10 +91,18 @@ class CsvImportServiceTest {
     void testImportDataAndParseToProductWithCsvException() {
 
         //Per Reflection setzen wir nun das normalerweise per Spring Boot befüllte csvFilePath Feld
-        ReflectionTestUtils.setField(cut, "csvFilePath", "this/is/not/a/valid/path");
+        ReflectionTestUtils.setField(cut, "csvFilePath", "this/is/not/a/valid/path.csv");
 
         assertThatThrownBy(() -> cut.importDataAndParseToProduct()).isInstanceOf(CsvParsingException.class)
                 .hasMessageContaining("(The system cannot find the path specified)");
+    }
+
+    @Test
+    void testImPortDataNadParseToProductNotACsvFile() {
+        String filePath = "this/is/not/a/valid/path";
+        ReflectionTestUtils.setField(cut, "csvFilePath", filePath);
+        assertThatThrownBy(() -> cut.importDataAndParseToProduct()).isInstanceOf(CsvParsingException.class)
+                .hasMessage("Not a csv file! " + filePath);
     }
 
     @AfterEach
