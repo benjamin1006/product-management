@@ -15,12 +15,10 @@ public class CheeseMapperStrategy implements ICsvMapperStrategy {
 
     @Override
     public Product mapTo(String[] line) {
-        Cheese cheese = new Cheese();
-        cheese.setType(line[0]);
-        cheese.setQuality(Integer.parseInt(line[1]));
-        cheese.setPrice(Double.parseDouble(line[2]));
-        cheese.setExpirationDate(getRandomExpirationDate());
-        return cheese;
+        final String type = line[0];
+        final int quality = Integer.parseInt(line[1]);
+        final double price = Double.parseDouble(line[2]);
+        return new Cheese(type, quality, getRandomExpirationDate(), price);
     }
 
     @Override

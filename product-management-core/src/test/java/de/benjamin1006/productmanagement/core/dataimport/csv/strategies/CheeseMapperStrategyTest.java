@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class CheeseMapperStrategyTest {
 
-    CheeseMapperStrategy cut = new CheeseMapperStrategy();
+    private final CheeseMapperStrategy cut = new CheeseMapperStrategy();
 
     @Test
     void testMapTo() {

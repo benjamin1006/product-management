@@ -39,7 +39,7 @@ public class CsvImportService implements IDataImport {
     }
 
     /**
-     * Methode zum Mappen des übergeben Strings zu einer Liste vom Typ Product.
+     * Methode zum Mappen der konfigurierten Csv Datei zu einer Liste vom Typ Product.
      *
      * @return eine Liste vom Typ Product
      */

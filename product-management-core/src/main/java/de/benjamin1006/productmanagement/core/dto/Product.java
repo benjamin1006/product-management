@@ -12,6 +12,13 @@ public abstract class Product {
     private LocalDate expirationDate;
     private double price;
 
+    protected Product(String type, int quality, LocalDate expirationDate, double price) {
+        this.type = type;
+        this.quality = quality;
+        this.expirationDate = expirationDate;
+        this.price = price;
+    }
+
     public String getType() {
         return type;
     }
@@ -50,7 +57,7 @@ public abstract class Product {
                 .add("type='" + type + "'")
                 .add("quality=" + quality)
                 .add("expirationDate=" + expirationDate)
-                .add("price=" + price)
+                .add("price=" + String.format("%.2f", price))
                 .toString();
     }
 }
