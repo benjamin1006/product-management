@@ -1,8 +1,8 @@
 package de.benjamin1006.productmanagement.core.processing.strategies;
 
 import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
-import de.benjamin1006.productmanagement.core.dto.Cheese;
-import de.benjamin1006.productmanagement.core.dto.Product;
+import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package de.benjamin1006.productmanagement.core.dataimport.csv.strategies;
 
-import de.benjamin1006.productmanagement.core.dto.Cheese;
-import de.benjamin1006.productmanagement.core.dto.Product;
+import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

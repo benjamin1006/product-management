@@ -20,6 +20,12 @@
         </dependency>
 
         <dependency>
+            <groupId>de.benjamin1006</groupId>
+            <artifactId>product-management-datamodel</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
             <exclusions>

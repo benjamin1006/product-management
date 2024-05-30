@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.exception;
+package de.benjamin1006.productmanagement.datamodel.exception;
 
 /**
  * Exception, die ausgelöst wird, wenn ein Fehler beim Parsen einer CSV-Datei auftritt.

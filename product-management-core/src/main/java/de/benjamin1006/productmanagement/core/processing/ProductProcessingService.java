@@ -1,9 +1,9 @@
 package de.benjamin1006.productmanagement.core.processing;
 
-import de.benjamin1006.productmanagement.core.dto.Product;
-import de.benjamin1006.productmanagement.core.exception.ProductNotFoundException;
 import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.core.processing.strategies.IProductProcessingStrategy;
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.datamodel.exception.ProductNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

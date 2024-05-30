@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.dto;
+package de.benjamin1006.productmanagement.datamodel.dto;
 
 
 import java.time.LocalDate;

@@ -1,6 +1,7 @@
 package de.benjamin1006.productmanagement.core.dataimport.csv.strategies;
 
-import de.benjamin1006.productmanagement.core.dto.Product;
+
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
 
 /**
  * Strategy Pattern für das Mappen von Csv auf verschiedene Produkte.

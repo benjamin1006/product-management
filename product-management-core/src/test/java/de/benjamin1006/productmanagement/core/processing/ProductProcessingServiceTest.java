@@ -1,10 +1,10 @@
 package de.benjamin1006.productmanagement.core.processing;
 
 import de.benjamin1006.productmanagement.core.CoreConfig;
-import de.benjamin1006.productmanagement.core.dto.Cheese;
-import de.benjamin1006.productmanagement.core.dto.Product;
-import de.benjamin1006.productmanagement.core.dto.Wine;
 import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
+import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.datamodel.dto.Wine;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

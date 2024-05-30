@@ -1,6 +1,7 @@
 package de.benjamin1006.productmanagement.core.dataimport;
 
-import de.benjamin1006.productmanagement.core.dto.Product;
+
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
 
 import java.util.List;
 

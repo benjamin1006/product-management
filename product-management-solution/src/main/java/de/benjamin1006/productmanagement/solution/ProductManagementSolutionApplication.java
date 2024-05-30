@@ -2,9 +2,9 @@ package de.benjamin1006.productmanagement.solution;
 
 import de.benjamin1006.productmanagement.core.CoreConfig;
 import de.benjamin1006.productmanagement.core.dataimport.IDataImport;
-import de.benjamin1006.productmanagement.core.dto.Product;
 import de.benjamin1006.productmanagement.core.processing.ProductProcessingService;
 import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
+import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
