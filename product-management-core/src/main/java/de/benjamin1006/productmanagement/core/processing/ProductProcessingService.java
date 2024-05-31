@@ -1,11 +1,15 @@
 package de.benjamin1006.productmanagement.core.processing;
 
+import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.core.processing.strategies.IProductProcessingStrategy;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import de.benjamin1006.productmanagement.datamodel.exception.ProductNotFoundException;
 import de.benjamin1006.productmanagement.observer.manager.IEventManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,15 +25,29 @@ import static de.benjamin1006.productmanagement.observer.EventType.UPDATE;
 @Service
 public class ProductProcessingService {
 
+    private static final Logger log = LoggerFactory.getLogger(ProductProcessingService.class);
 
     private final List<IProductProcessingStrategy> iProductProcessingStrategies;
     private final IEventManager productManagementEventManager;
+    private final ICurrentDayProvider currentDayProvider;
 
     public ProductProcessingService(List<IProductProcessingStrategy> iProductProcessingStrategies,
-                                    IEventManager productManagementEventManager
-    ) {
+                                    IEventManager productManagementEventManager,
+                                    ICurrentDayProvider currentDayProvider) {
         this.iProductProcessingStrategies = iProductProcessingStrategies;
         this.productManagementEventManager = productManagementEventManager;
+        this.currentDayProvider = currentDayProvider;
+    }
+
+    public void processProductsForTimePeriod(List<Product> productList, int timePeriod) {
+
+        log.info("Verarbeitungslogik aller Produkte wird für einen Zeitraum von {} Tagen angewandt", timePeriod);
+        for (int i = 0; i < timePeriod; i++) {
+            currentDayProvider.setCurrentDay(LocalDate.now().plusDays(i + 1L));
+            productList = processProductsForOneDay(productList);
+        }
+
+        productManagementEventManager.notifyProductListObservers(UPDATE, productList);
     }
 
     /**
@@ -37,6 +55,7 @@ public class ProductProcessingService {
      * genutzt. In dieser Methode werden sowohl die Qualität als auch der Preis angepasst. Zusätzlich werden abgelaufene oder
      * unter die Qualitätsgrenze gefallene Produkte entfernt.
      * Zusätzlich werden mithilfe des ObserverPatterns, die Produkte ausgegeben.
+     *
      * @param productList die Liste für die die Verarbeitung durchgeführt werden soll
      * @return die verarbeitete Liste ohne Produkte die entfernt werden müssen
      */
@@ -48,7 +67,6 @@ public class ProductProcessingService {
                     final boolean removeProduct = removeLowQualityOrExpiredProduct(product);
                     if (removeProduct) {
                         productManagementEventManager.notifyProductObservers(REMOVE, product);
-
                     } else {
                         productManagementEventManager.notifyProductObservers(UPDATE, product);
                     }
@@ -62,6 +80,7 @@ public class ProductProcessingService {
 
     /**
      * Überprüft, ob das übergebene Produkt abgelaufene oder unter die Qualitätsgrenze gefallen ist.
+     *
      * @param product das zu überprüfen Produkt
      * @return true, wenn das Produkt entfernt werden soll oder false, wenn es nicht entfernt werden soll.
      */
@@ -77,6 +96,7 @@ public class ProductProcessingService {
 
     /**
      * In dieser Methode werden sowohl die Qualität als auch der Preis angepasst
+     *
      * @param product das anzupassende Produkt
      */
     private void updateQualityAndPrice(Product product) {
