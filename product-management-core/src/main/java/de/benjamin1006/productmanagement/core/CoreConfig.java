@@ -7,7 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @ComponentScan({
         "de.benjamin1006.productmanagement.core.dataimport",
-        "de.benjamin1006.productmanagement.core.processing"
+        "de.benjamin1006.productmanagement.core.processing",
+        "de.benjamin1006.productmanagement.core.notification"
 })
 public class CoreConfig {
 }

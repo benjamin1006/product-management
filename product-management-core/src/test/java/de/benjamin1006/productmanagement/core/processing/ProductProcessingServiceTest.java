@@ -5,9 +5,11 @@ import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvide
 import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import de.benjamin1006.productmanagement.datamodel.dto.Wine;
+import de.benjamin1006.productmanagement.observer.manager.IEventManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,9 +20,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * @author Benjamin Woitczyk
  */
-@SpringBootTest(classes = CoreConfig.class)
+@SpringBootTest(classes = {CoreConfig.class})
 class ProductProcessingServiceTest {
 
+    @MockBean
+    private IEventManager eventManager;
     @Autowired
     private ProductProcessingService cut;
     @Autowired

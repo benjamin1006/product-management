@@ -48,6 +48,12 @@ public class CheeseProcessingStrategy implements IProductProcessingStrategy {
         return cheese.getBasePrice() + 0.1 * cheese.getQuality();
     }
 
+    /**
+     * Entscheidet, ob ein Objekt vom Typ Produkt Kind klasse Cheese, entfernt werden sollte.
+     * Käse darf nicht abgelaufen sein und muss mindestens eine Qualität von 30 haben damit er nicht entfernt wird.
+     * @param product Das Objekt vom Typ Product das überprüft werden soll
+     * @return true, wenn der Käse entfernt werden sollte, false, wenn nicht
+     */
     @Override
     public boolean removeProduct(Product product) {
         final boolean isExpired = product.getExpirationDate().isBefore(iCurrentDayProvider.getCurrentDay());
