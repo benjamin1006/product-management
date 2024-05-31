@@ -45,7 +45,7 @@ class CheeseMapperStrategyTest {
                 .describedAs("Das Datum sollte nach dem heutigen Tag liegen! Tatsächlicher Wert: {}!", expirationdate)
                 .isAfter(LocalDate.now())
                 .describedAs("Das Datum sollte mindestens 50 Tage in der Zukunft liegen! Tatsächlicher Wert: " + expirationdate)
-                .isAfter(LocalDate.now().plusDays(50))
+                .isAfter(LocalDate.now().plusDays(49))
                 .describedAs("Das Datum sollte maximal 100 Tage in der Zukunft liegen! Tatsächlicher Wert: " + expirationdate)
                 .isBefore(LocalDate.now().plusDays(101));
     }

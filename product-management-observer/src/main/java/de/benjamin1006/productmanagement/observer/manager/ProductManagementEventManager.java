@@ -18,7 +18,7 @@ import java.util.*;
 @Component
 public class ProductManagementEventManager implements IEventManager {
 
-    private final Map<EventType, List<IEventListener>> listeners = new EnumMap<>(EventType.class);
+    protected final Map<EventType, List<IEventListener>> listeners = new EnumMap<>(EventType.class);
 
     @PostConstruct
     @Override
