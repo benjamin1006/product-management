@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.processing.strategies;
+package de.benjamin1006.productmanagement.datamodel.interfaces.strategy.processing;
 
 
 import de.benjamin1006.productmanagement.datamodel.dto.Product;

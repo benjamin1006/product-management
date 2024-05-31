@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.dataimport.csv.strategies;
+package de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv;
 
 
 import de.benjamin1006.productmanagement.datamodel.dto.Product;

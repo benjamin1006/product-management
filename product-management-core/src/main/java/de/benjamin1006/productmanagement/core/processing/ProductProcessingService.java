@@ -1,7 +1,7 @@
 package de.benjamin1006.productmanagement.core.processing;
 
-import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
-import de.benjamin1006.productmanagement.core.processing.strategies.IProductProcessingStrategy;
+import de.benjamin1006.productmanagement.datamodel.interfaces.days.ICurrentDayProvider;
+import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.processing.IProductProcessingStrategy;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import de.benjamin1006.productmanagement.datamodel.exception.ProductNotFoundException;
 import de.benjamin1006.productmanagement.observer.manager.IEventManager;

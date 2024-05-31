@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.processing.days;
+package de.benjamin1006.productmanagement.datamodel.interfaces.days;
 
 import java.time.LocalDate;
 

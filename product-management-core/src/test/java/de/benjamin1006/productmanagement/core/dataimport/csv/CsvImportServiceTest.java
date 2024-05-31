@@ -1,6 +1,6 @@
 package de.benjamin1006.productmanagement.core.dataimport.csv;
 
-import de.benjamin1006.productmanagement.core.dataimport.csv.strategies.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv.ICsvMapperStrategy;
 import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import de.benjamin1006.productmanagement.datamodel.dto.Wine;

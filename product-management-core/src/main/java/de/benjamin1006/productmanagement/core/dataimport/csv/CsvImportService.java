@@ -3,7 +3,7 @@ package de.benjamin1006.productmanagement.core.dataimport.csv;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import de.benjamin1006.productmanagement.core.dataimport.IDataImport;
-import de.benjamin1006.productmanagement.core.dataimport.csv.strategies.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv.ICsvMapperStrategy;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
 import de.benjamin1006.productmanagement.datamodel.exception.CsvParsingException;
 import org.slf4j.Logger;

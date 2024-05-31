@@ -1,5 +1,6 @@
 package de.benjamin1006.productmanagement.core.processing.days;
 
+import de.benjamin1006.productmanagement.datamodel.interfaces.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.observer.EventType;
 import de.benjamin1006.productmanagement.observer.manager.IEventManager;
 import org.springframework.stereotype.Component;

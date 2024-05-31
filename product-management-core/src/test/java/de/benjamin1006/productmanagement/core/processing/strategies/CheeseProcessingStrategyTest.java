@@ -1,6 +1,6 @@
 package de.benjamin1006.productmanagement.core.processing.strategies;
 
-import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
+import de.benjamin1006.productmanagement.datamodel.interfaces.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
 import de.benjamin1006.productmanagement.datamodel.dto.Wine;
 import org.junit.jupiter.api.BeforeEach;
