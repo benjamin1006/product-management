@@ -22,8 +22,8 @@ import static de.benjamin1006.productmanagement.observer.EventType.*;
 @Import({CoreConfig.class, ObserverConfig.class, FishConfig.class})
 public class ProductManagementSolutionApplication implements CommandLineRunner {
 
-    @Value("${product-management.period}")
-    private int period;
+    @Value("${product-management.time-period}")
+    private int timePeriod;
 
     private final IDataImport csvImportService;
     private final ProductProcessingService productProcessingService;
@@ -50,7 +50,7 @@ public class ProductManagementSolutionApplication implements CommandLineRunner {
                 .toList();
         productManagementEventManager.notifyProductListObservers(CREATE, filteredProductList);
 
-        productProcessingService.processProductsForTimePeriod(filteredProductList, period);
+        productProcessingService.processProductsForTimePeriod(filteredProductList, timePeriod);
     }
 
 

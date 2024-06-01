@@ -29,7 +29,7 @@ public class CsvImportService implements IDataImport {
 
     private static final Logger log = LoggerFactory.getLogger(CsvImportService.class);
 
-    @Value("${product-management.csvFilePath}")
+    @Value("${product-management.csv-file-path}")
     private String csvFilePath;
 
     private final List<ICsvMapperStrategy> csvMapperStrategies;
