@@ -18,8 +18,9 @@ public class CheeseMapperStrategy implements ICsvMapperStrategy {
     public Product mapTo(String[] line) {
         final String type = line[0];
         final int quality = Integer.parseInt(line[1]);
-        final double price = Double.parseDouble(line[2]);
-        return new Cheese(type, quality, getRandomExpirationDate(), price);
+        final double basePrice = Double.parseDouble(line[2]);
+        final double price = calculateFristDayPrice(basePrice, quality);
+        return new Cheese(type, quality, getRandomExpirationDate(), price, basePrice);
     }
 
     @Override
@@ -39,5 +40,16 @@ public class CheeseMapperStrategy implements ICsvMapperStrategy {
         int randomDays = ThreadLocalRandom.current().nextInt(50, 101);
 
         return currentDate.plusDays(randomDays);
+    }
+
+    /**
+     * Damit beim Käse auch bereits am ersten Tag die Qualität mit einberechnet wird, wird hier direkt der erste Tagespreis
+     * berechnet.
+     * @param basePrice der Grundpreis, auf dessen Grundlage der Tagespreis berechnet wird.
+     * @param quality die Qualität die mit einberechnet werden soll
+     * @return der tagespreis für Tag 1
+     */
+    private double calculateFristDayPrice(double basePrice, int quality) {
+        return basePrice + 0.1 * quality;
     }
 }

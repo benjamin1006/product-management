@@ -56,7 +56,7 @@ class CsvImportServiceTest {
         ReflectionTestUtils.setField(cut, "csvFilePath", "src/test/resources/test.csv");
 
         //Zum Schluss erstellen wir noch zwei Objekte die uns für die Tests dienen
-        Product cheese = new Cheese("kaese", -1, LocalDate.now().plusDays(50), 1.0);
+        Product cheese = new Cheese("kaese", -1, LocalDate.now().plusDays(50), 1.0, 0.5);
 
         Product wine = new Wine("wein", 1, 5.9, LocalDate.now());
 

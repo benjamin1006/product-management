@@ -9,9 +9,9 @@ public class Cheese extends Product {
 
     private double basePrice;
 
-    public Cheese(String type, int quality, LocalDate expirationDate, double price) {
+    public Cheese(String type, int quality, LocalDate expirationDate, double price, double basePrice) {
         super(type, quality, expirationDate, price);
-        this.basePrice = price;
+        this.basePrice = basePrice;
     }
 
     public double getBasePrice() {

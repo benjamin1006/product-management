@@ -32,7 +32,7 @@ class ProductManagementEventManagerTest {
 
     @BeforeEach
     void setUp() {
-        product = new Cheese("käse", 40, LocalDate.now().plusDays(50L), 1.99);
+        product = new Cheese("käse", 40, LocalDate.now().plusDays(50L), 1.99 + 0.1 * 40, 1.99);
         MockitoAnnotations.openMocks(this);
         cut = new ProductManagementEventManager();
         listener = Mockito.mock(IEventListener.class);

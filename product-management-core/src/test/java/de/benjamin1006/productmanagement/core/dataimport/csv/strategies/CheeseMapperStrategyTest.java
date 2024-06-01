@@ -42,8 +42,8 @@ class CheeseMapperStrategyTest {
                 .describedAs("Die Qualität sollte 20 sein! Tatsächlicher Wert: " + cheese.getQuality())
                 .isEqualTo(20);
         assertThat(cheese.getPrice())
-                .describedAs("Der Preis sollte bei 5.99 liegen! Tatsächlicher Wert: " + cheese.getPrice())
-                .isEqualTo(5.99);
+                .describedAs("Der Preis sollte bei 7.99 liegen! Tatsächlicher Wert: " + cheese.getPrice())
+                .isEqualTo(7.99);
 
         final LocalDate expirationdate = cheese.getExpirationDate();
         assertThat(expirationdate)

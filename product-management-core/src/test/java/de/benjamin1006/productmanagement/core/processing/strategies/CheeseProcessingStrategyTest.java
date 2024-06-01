@@ -28,7 +28,7 @@ class CheeseProcessingStrategyTest {
         Erstellung eines Standardobjekts vom Typ Cheese, die benötigten Felder werden in den jeweiligen Tests
         so überschrieben wie es gebraucht wird
          */
-        cheese = new Cheese("käse", 10, LocalDate.now().plusDays(50L),4.99);
+        cheese = new Cheese("käse", 10, LocalDate.now().plusDays(50L),4.99, 1.99);
     }
 
     @Test

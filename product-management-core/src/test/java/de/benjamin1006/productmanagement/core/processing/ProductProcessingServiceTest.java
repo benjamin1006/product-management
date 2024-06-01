@@ -51,7 +51,7 @@ class ProductProcessingServiceTest {
 
         //Es werden je ein Produkt vom Typ Wine und Cheese erstellt, beide Produkte passen von den Rahmenbedingungen in den Ablauf.
         Product wine = new Wine("wein", 10, 20, aktuellerTag);
-        Product cheese = new Cheese("käse", 31, aktuellerTag.plusDays(50), 1.99);
+        Product cheese = new Cheese("käse", 31, aktuellerTag.plusDays(50), 4.99, 1.99);
         List<Product> products = List.of(wine, cheese);
 
         List<Product> result = cut.processProductsForOneDay(products);
@@ -86,7 +86,8 @@ class ProductProcessingServiceTest {
 
         //Es werden je ein Produkt vom Typ Wine und Cheese erstellt, beide Produkte passen von den Rahmenbedingungen in den Ablauf.
         Product product1 = new Wine("wein", 10, 20, aktuellerTag);
-        Product product2 = new Cheese("käse", 31, aktuellerTag.plusDays(50), 1.99);
+        Product product2 = new Cheese("käse", 31, aktuellerTag.plusDays(50), 4.99, 1.99);
+
         List<Product> products = List.of(product1, product2);
 
         List<Product> result = cut.processProductsForOneDay(products);
@@ -117,7 +118,7 @@ class ProductProcessingServiceTest {
     @Test
     void testRemoveLowQualityOrExpiredProductForLowQualityCheese() {
         currentDayProvider.setCurrentDay(aktuellerTag);
-        Product product = new Cheese("käse", 10, aktuellerTag.plusDays(50), 1.99);
+        Product product = new Cheese("käse", 10, aktuellerTag.plusDays(50), 4.99, 1.99);
 
         boolean result = cut.removeLowQualityOrExpiredProduct(product);
 
@@ -134,7 +135,7 @@ class ProductProcessingServiceTest {
     @Test
     void testRemoveLowQualityOrExpiredProductForExpiredCheese() {
         currentDayProvider.setCurrentDay(aktuellerTag);
-        Product product = new Cheese("käse", 30, aktuellerTag.minusDays(1), 1.99);
+        Product product = new Cheese("käse", 30, aktuellerTag.minusDays(1), 4.99, 1.99);
 
         boolean result = cut.removeLowQualityOrExpiredProduct(product);
 
@@ -151,7 +152,7 @@ class ProductProcessingServiceTest {
     @Test
     void testRemoveLowQualityOrExpiredProductForGoodCheese() {
         currentDayProvider.setCurrentDay(aktuellerTag);
-        Product product = new Cheese("käse", 30, aktuellerTag.plusDays(50), 1.99);
+        Product product = new Cheese("käse", 30, aktuellerTag.plusDays(50), 4.99, 1.99);
 
         boolean result = cut.removeLowQualityOrExpiredProduct(product);
 
@@ -168,7 +169,7 @@ class ProductProcessingServiceTest {
     @Test
     void testRemoveLowQualityOrExpiredProductForNotExpiredCheese() {
         currentDayProvider.setCurrentDay(aktuellerTag);
-        Product product = new Cheese("käse", 30, aktuellerTag, 1.99);
+        Product product = new Cheese("käse", 30, aktuellerTag, 4.99, 1.99);
 
         boolean result = cut.removeLowQualityOrExpiredProduct(product);
 
@@ -184,7 +185,7 @@ class ProductProcessingServiceTest {
     @Test
     void testRemoveLowQualityOrExpiredProductForLowQualityWine() {
         currentDayProvider.setCurrentDay(aktuellerTag);
-        Product product = new Cheese("wine", -1, aktuellerTag.plusDays(50), 1.99);
+        Product product = new Cheese("wine", -1, aktuellerTag.plusDays(50), 4.99, 1.99);
 
         boolean result = cut.removeLowQualityOrExpiredProduct(product);
 
@@ -227,9 +228,9 @@ class ProductProcessingServiceTest {
         final double startingPriceGoodCheese = 1.99;
 
         Product wine = new Wine("wein", startingQualityWine, startingPriceWine, aktuellerTag);
-        Product lowQualityCheese = new Cheese("käse", 31, aktuellerTag.plusDays(15), 1.99);
-        Product goodCheese = new Cheese("käse", startingQualityGoodCheese, aktuellerTag.plusDays(21), startingPriceGoodCheese);
-        Product expiredCheese = new Cheese("käse", 50, aktuellerTag.plusDays(5), 2.99);
+        Product lowQualityCheese = new Cheese("käse", 31, aktuellerTag.plusDays(15), 4.99, 1.99);
+        Product goodCheese = new Cheese("käse", startingQualityGoodCheese, aktuellerTag.plusDays(21), 4.99, startingPriceGoodCheese);
+        Product expiredCheese = new Cheese("käse", 50, aktuellerTag.plusDays(5), 2.99, 0.99);
 
         final List<Product> productList = List.of(wine, lowQualityCheese, goodCheese, expiredCheese);
 

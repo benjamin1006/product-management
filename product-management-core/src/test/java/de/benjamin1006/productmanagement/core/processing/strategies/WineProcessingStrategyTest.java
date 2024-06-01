@@ -40,7 +40,7 @@ class WineProcessingStrategyTest {
 
     @Test
     void testIsCorrectTypeWithCheese() {
-        assertThat(cut.isCorrectType(new Cheese("käse", 30, LocalDate.now().plusDays(50), 4.99)))
+        assertThat(cut.isCorrectType(new Cheese("käse", 30, LocalDate.now().plusDays(50), 4.99, 1.99)))
                 .describedAs("Das es sich beim Objekt Typ nicht um den Typ Wein handelt sollte die Methode false zurückgeben")
                 .isFalse();
     }
