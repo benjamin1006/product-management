@@ -17,6 +17,13 @@ class CheeseMapperStrategyTest {
     private final CheeseMapperStrategy cut = new CheeseMapperStrategy();
 
     @Test
+    void getMapperType() {
+        assertThat(cut.getMapperType())
+                .describedAs("Da es sich um eine CheeseMapperStrategy handelt sollte hier Fisch returned käse")
+                .isEqualTo("käse");
+    }
+
+    @Test
     void testMapTo() {
         String[] testData = {"käse", "20", "5.99"};
 

@@ -19,6 +19,13 @@ class WineMapperStrategyTest {
     private final WineMapperStrategy cut = new WineMapperStrategy(currentDayProvider);
 
     @Test
+    void getMapperType() {
+        assertThat(cut.getMapperType())
+                .describedAs("Da es sich um eine WineMapperStrategy handelt sollte hier Fisch returned wein")
+                .isEqualTo("wein");
+    }
+
+    @Test
     void testMapTo() {
 
         Mockito.when(currentDayProvider.getCurrentDay()).thenReturn(LocalDate.now());
