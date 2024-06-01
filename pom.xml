@@ -27,5 +27,6 @@
         <module>product-management-core</module>
         <module>product-management-observer</module>
         <module>product-management-datamodel</module>
+        <module>product-management-fish</module>
     </modules>
 </project>

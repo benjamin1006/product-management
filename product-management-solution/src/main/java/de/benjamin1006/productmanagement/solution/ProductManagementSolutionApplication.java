@@ -5,6 +5,7 @@ import de.benjamin1006.productmanagement.core.dataimport.IDataImport;
 import de.benjamin1006.productmanagement.core.notification.NotificationService;
 import de.benjamin1006.productmanagement.core.processing.ProductProcessingService;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.fish.FishConfig;
 import de.benjamin1006.productmanagement.observer.ObserverConfig;
 import de.benjamin1006.productmanagement.observer.manager.IEventManager;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,7 +19,7 @@ import java.util.List;
 import static de.benjamin1006.productmanagement.observer.EventType.*;
 
 @SpringBootApplication
-@Import({CoreConfig.class, ObserverConfig.class})
+@Import({CoreConfig.class, ObserverConfig.class, FishConfig.class})
 public class ProductManagementSolutionApplication implements CommandLineRunner {
 
     @Value("${product-management.period}")

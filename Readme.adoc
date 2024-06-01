@@ -1,0 +1,50 @@
+= product-management
+
+== Erweiterung Modul Fish
+Um die Anwendung auch Fische verarbeiten zu lassen, muss die property product-management.fish true gesetzt haben.
+Ist sie auf false werden Fische nicht verarbeitet
+
+[source,properties]
+----
+product-management.fish=true
+----
+
+
+
+
+== Verarbeitungsregeln
+[cols="4*"]
+|===
+| Allgemein | Käse | Wein | Fisch
+//Zeile 1 Qualität
+| Jedes Produkt hat einen fixen, nicht variablen Grundpreis.
+| Käse benötigt ein minimales Qualitätsniveau von 30, um im Regal eingeräumt zu werden, bzw. wird ausgeräumt sobald die Qualität unter 30 sinkt.
+| Für Wein wird jedes nicht negative Qualitätsniveau akzeptiert.
+| Qualitätsniveau von >= 40
+//Zeile 2 Preis
+| Der Tagespreis wird durch Qualität bestimmt: Grundpreis + 0,10€ * Qualität
+| Käse hat einen tagesaktuellen Preis.
+| Weine verändern ihren Preis nicht, nachdem sie ins Regal eingeräumt wurden.
+| Frisch: tagesaktueller Preis
+
+Gefroren: Der tagesaktuelle Preis ist nicht mehr von der Qualität abhängig, wird aber jeden Tag um 0,05€ Stromkosten erhöht
+//Zeile 3 Verfallsdatum
+|
+| Käse hat ein Verfallsdatum, das zwischen 50 und 100 Tagen in der Zukunft liegt.
+| Wein verfällt nicht.
+| Verfällt 7 Tage nach Fangdatum, Fangdatum ist einen Tag vor dem Erfassungsdatum
+
+Gefrorener Fisch wird nach 30 Tagen nach dem aussortiert
+//Zeile 4 Qualitätsverfall
+|
+| Käse verliert täglich einen Qualitätspunkt.
+| Wein verliert nicht an Qualität, sondern gewinnt ab dem Stichtag alle 10 Tage +1 Qualität hinzu, bis die Qualität 50 erreicht ist.
+| Frisch: Verliert täglich 2 Qualitätspunkte
+
+Gefroren: Gefrorener Fisch verliert keine Qualität
+//Zeile 5 Status
+|
+|
+|
+| Fisch ist beim Erfassen frisch, erreicht er ein Qualitätsniveau von genau 40 wird er eingefroren
+|===
