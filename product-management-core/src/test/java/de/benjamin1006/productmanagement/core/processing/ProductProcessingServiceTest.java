@@ -225,11 +225,12 @@ class ProductProcessingServiceTest {
         final int startingQualityWine = 10;
         final int startingPriceWine = 20;
         final int startingQualityGoodCheese = 50;
-        final double startingPriceGoodCheese = 1.99;
+        final double basePriceGoodCheese = 1.99;
+        final double startingPriceGoodCheese = 1.99 + 0.1 * startingQualityGoodCheese;
 
         Product wine = new Wine("wein", startingQualityWine, startingPriceWine, aktuellerTag);
         Product lowQualityCheese = new Cheese("käse", 31, aktuellerTag.plusDays(15), 4.99, 1.99);
-        Product goodCheese = new Cheese("käse", startingQualityGoodCheese, aktuellerTag.plusDays(21), 4.99, startingPriceGoodCheese);
+        Product goodCheese = new Cheese("käse", startingQualityGoodCheese, aktuellerTag.plusDays(21), startingPriceGoodCheese, basePriceGoodCheese);
         Product expiredCheese = new Cheese("käse", 50, aktuellerTag.plusDays(5), 2.99, 0.99);
 
         final List<Product> productList = List.of(wine, lowQualityCheese, goodCheese, expiredCheese);
@@ -272,7 +273,7 @@ class ProductProcessingServiceTest {
                 .describedAs("Die Qualität des Käses sollte um zwanzig Punkte gesunken sein. Ausgangs Wert: " + startingQualityGoodCheese)
                 .isEqualTo(30);
         assertThat(updatedCheese.getPrice())
-                .describedAs("Der Preis des Käses sollte sich verändert haben. AusgangsWert: " + startingPriceGoodCheese)
+                .describedAs("Der Preis des Käses sollte sich auf 4.99 verändert haben. AusgangsWert: " + startingPriceGoodCheese)
                 .isEqualTo(4.99);
     }
 
