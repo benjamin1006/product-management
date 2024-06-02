@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.dataimport.csv.strategies;
+package de.benjamin1006.productmanagement.dataimport.csv.strategies;
 
 import de.benjamin1006.productmanagement.datamodel.interfaces.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;

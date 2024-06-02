@@ -1,7 +1,8 @@
 package de.benjamin1006.productmanagement.solution;
 
 import de.benjamin1006.productmanagement.core.CoreConfig;
-import de.benjamin1006.productmanagement.core.dataimport.IDataImport;
+import de.benjamin1006.productmanagement.dataimport.CsvImportConfig;
+import de.benjamin1006.productmanagement.datamodel.interfaces.dataimport.IDataImport;
 import de.benjamin1006.productmanagement.core.notification.NotificationService;
 import de.benjamin1006.productmanagement.core.processing.ProductProcessingService;
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
@@ -19,7 +20,7 @@ import java.util.List;
 import static de.benjamin1006.productmanagement.observer.EventType.*;
 
 @SpringBootApplication
-@Import({CoreConfig.class, ObserverConfig.class, FishConfig.class})
+@Import({CoreConfig.class, ObserverConfig.class, FishConfig.class, CsvImportConfig.class})
 public class ProductManagementSolutionApplication implements CommandLineRunner {
 
     @Value("${product-management.time-period}")
@@ -52,6 +53,4 @@ public class ProductManagementSolutionApplication implements CommandLineRunner {
 
         productProcessingService.processProductsForTimePeriod(filteredProductList, timePeriod);
     }
-
-
 }

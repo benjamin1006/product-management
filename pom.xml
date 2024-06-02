@@ -28,5 +28,6 @@
         <module>product-management-observer</module>
         <module>product-management-datamodel</module>
         <module>product-management-fish</module>
+        <module>product-management-csv-import</module>
     </modules>
 </project>

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>de.benjamin1006</groupId>
         <artifactId>product-management</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>product-management-core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>product-management-core</name>
+    <artifactId>product-management-csv-import</artifactId>
 
     <dependencies>
         <dependency>
@@ -26,9 +24,15 @@
         </dependency>
 
         <dependency>
-            <groupId>de.benjamin1006</groupId>
-            <artifactId>product-management-observer</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>5.7.1</version>
         </dependency>
 
         <dependency>
@@ -37,5 +41,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 
 </project>

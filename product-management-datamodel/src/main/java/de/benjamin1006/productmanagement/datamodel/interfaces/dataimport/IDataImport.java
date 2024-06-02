@@ -1,4 +1,4 @@
-package de.benjamin1006.productmanagement.core.dataimport;
+package de.benjamin1006.productmanagement.datamodel.interfaces.dataimport;
 
 
 import de.benjamin1006.productmanagement.datamodel.dto.Product;
