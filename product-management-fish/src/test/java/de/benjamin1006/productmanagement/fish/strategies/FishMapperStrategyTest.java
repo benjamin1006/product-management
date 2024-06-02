@@ -1,6 +1,6 @@
 package de.benjamin1006.productmanagement.fish.strategies;
 
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.core.dto.Product;
 import de.benjamin1006.productmanagement.fish.dto.Fish;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import org.junit.jupiter.api.Test;

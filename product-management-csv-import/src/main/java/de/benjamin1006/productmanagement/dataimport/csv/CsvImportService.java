@@ -2,10 +2,10 @@ package de.benjamin1006.productmanagement.dataimport.csv;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import de.benjamin1006.productmanagement.datamodel.interfaces.dataimport.IDataImport;
-import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv.ICsvMapperStrategy;
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
-import de.benjamin1006.productmanagement.datamodel.exception.CsvParsingException;
+import de.benjamin1006.productmanagement.core.interfaces.dataimport.IDataImport;
+import de.benjamin1006.productmanagement.core.interfaces.strategy.csv.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.core.dto.Product;
+import de.benjamin1006.productmanagement.core.exception.CsvParsingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

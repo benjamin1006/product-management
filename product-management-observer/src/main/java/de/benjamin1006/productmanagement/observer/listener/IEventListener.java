@@ -1,6 +1,6 @@
 package de.benjamin1006.productmanagement.observer.listener;
 
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.core.dto.Product;
 import de.benjamin1006.productmanagement.observer.EventType;
 
 import java.time.LocalDate;

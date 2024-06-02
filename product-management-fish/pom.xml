@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>de.benjamin1006</groupId>
-            <artifactId>product-management-datamodel</artifactId>
+            <artifactId>product-management-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

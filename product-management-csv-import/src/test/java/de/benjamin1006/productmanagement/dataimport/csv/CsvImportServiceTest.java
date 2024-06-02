@@ -1,10 +1,10 @@
 package de.benjamin1006.productmanagement.dataimport.csv;
 
-import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv.ICsvMapperStrategy;
-import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
-import de.benjamin1006.productmanagement.datamodel.dto.Wine;
-import de.benjamin1006.productmanagement.datamodel.exception.CsvParsingException;
+import de.benjamin1006.productmanagement.core.interfaces.strategy.csv.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.core.dto.Cheese;
+import de.benjamin1006.productmanagement.core.dto.Product;
+import de.benjamin1006.productmanagement.core.dto.Wine;
+import de.benjamin1006.productmanagement.core.exception.CsvParsingException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,11 +1,11 @@
 package de.benjamin1006.productmanagement.solution;
 
-import de.benjamin1006.productmanagement.core.CoreConfig;
+import de.benjamin1006.productmanagement.processing.ProcessingConfig;
 import de.benjamin1006.productmanagement.dataimport.CsvImportConfig;
-import de.benjamin1006.productmanagement.datamodel.interfaces.dataimport.IDataImport;
-import de.benjamin1006.productmanagement.core.notification.NotificationService;
-import de.benjamin1006.productmanagement.core.processing.ProductProcessingService;
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.core.interfaces.dataimport.IDataImport;
+import de.benjamin1006.productmanagement.processing.notification.NotificationService;
+import de.benjamin1006.productmanagement.processing.extecution.ProductProcessingService;
+import de.benjamin1006.productmanagement.core.dto.Product;
 import de.benjamin1006.productmanagement.fish.FishConfig;
 import de.benjamin1006.productmanagement.observer.ObserverConfig;
 import de.benjamin1006.productmanagement.observer.manager.IEventManager;
@@ -20,7 +20,7 @@ import java.util.List;
 import static de.benjamin1006.productmanagement.observer.EventType.*;
 
 @SpringBootApplication
-@Import({CoreConfig.class, ObserverConfig.class, FishConfig.class, CsvImportConfig.class})
+@Import({ProcessingConfig.class, ObserverConfig.class, FishConfig.class, CsvImportConfig.class})
 public class ProductManagementSolutionApplication implements CommandLineRunner {
 
     @Value("${product-management.time-period}")

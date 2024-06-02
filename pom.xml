@@ -25,8 +25,8 @@
     <modules>
         <module>product-management-solution</module>
         <module>product-management-core</module>
+        <module>product-management-processing</module>
         <module>product-management-observer</module>
-        <module>product-management-datamodel</module>
         <module>product-management-fish</module>
         <module>product-management-csv-import</module>
     </modules>

@@ -1,9 +1,9 @@
 package de.benjamin1006.productmanagement.dataimport.csv.strategies;
 
-import de.benjamin1006.productmanagement.datamodel.interfaces.days.ICurrentDayProvider;
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
-import de.benjamin1006.productmanagement.datamodel.dto.Wine;
-import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.core.interfaces.days.ICurrentDayProvider;
+import de.benjamin1006.productmanagement.core.dto.Product;
+import de.benjamin1006.productmanagement.core.dto.Wine;
+import de.benjamin1006.productmanagement.core.interfaces.strategy.csv.ICsvMapperStrategy;
 import org.springframework.stereotype.Component;
 
 /**

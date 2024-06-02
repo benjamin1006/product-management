@@ -1,7 +1,7 @@
 package de.benjamin1006.productmanagement.observer.manager;
 
-import de.benjamin1006.productmanagement.datamodel.dto.Cheese;
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
+import de.benjamin1006.productmanagement.core.dto.Cheese;
+import de.benjamin1006.productmanagement.core.dto.Product;
 import de.benjamin1006.productmanagement.observer.EventType;
 import de.benjamin1006.productmanagement.observer.listener.IEventListener;
 import org.junit.jupiter.api.BeforeEach;

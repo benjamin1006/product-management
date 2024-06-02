@@ -1,7 +1,7 @@
 package de.benjamin1006.productmanagement.fish.strategies;
 
-import de.benjamin1006.productmanagement.datamodel.dto.Product;
-import de.benjamin1006.productmanagement.datamodel.interfaces.strategy.csv.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.core.dto.Product;
+import de.benjamin1006.productmanagement.core.interfaces.strategy.csv.ICsvMapperStrategy;
 import de.benjamin1006.productmanagement.fish.dto.FishBuilder;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
