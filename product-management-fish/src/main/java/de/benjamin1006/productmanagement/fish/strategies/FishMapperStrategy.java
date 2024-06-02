@@ -1,8 +1,8 @@
 package de.benjamin1006.productmanagement.fish.strategies;
 
-import de.benjamin1006.productmanagement.core.dto.Product;
-import de.benjamin1006.productmanagement.core.interfaces.strategy.csv.ICsvMapperStrategy;
-import de.benjamin1006.productmanagement.fish.dto.FishBuilder;
+import de.benjamin1006.productmanagement.core.component.strategy.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.core.dto.ProductDto;
+import de.benjamin1006.productmanagement.fish.dto.FishDtoBuilder;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
  * @author Benjamin Woitczyk
  */
 @Component
-@ConditionalOnProperty(prefix = "product-management", name = "fish", havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(prefix = "product-management", name = "fish-is-active", havingValue = "true", matchIfMissing = false)
 public class FishMapperStrategy implements ICsvMapperStrategy {
 
     @Override
@@ -22,13 +22,13 @@ public class FishMapperStrategy implements ICsvMapperStrategy {
     }
 
     @Override
-    public Product mapTo(String[] line) {
+    public ProductDto mapTo(String[] line) {
         final String type = line[0];
         final int quality = Integer.parseInt(line[1]);
         final double price = Double.parseDouble(line[2]);
         final LocalDate catchDate = calculateCatchDate();
         final LocalDate expirationDate = calculateExpirationDate(catchDate);
-        return FishBuilder.aFish()
+        return FishDtoBuilder.aFish()
                 .withType(type)
                 .withQuality(quality)
                 .withBasePrice(price)

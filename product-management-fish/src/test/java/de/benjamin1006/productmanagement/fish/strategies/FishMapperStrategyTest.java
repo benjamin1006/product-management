@@ -1,7 +1,7 @@
 package de.benjamin1006.productmanagement.fish.strategies;
 
-import de.benjamin1006.productmanagement.core.dto.Product;
-import de.benjamin1006.productmanagement.fish.dto.Fish;
+import de.benjamin1006.productmanagement.core.dto.ProductDto;
+import de.benjamin1006.productmanagement.fish.dto.FishDto;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import org.junit.jupiter.api.Test;
 
@@ -26,13 +26,13 @@ class FishMapperStrategyTest {
     @Test
     void mapTo() {
         String[] testData = {"fisch", "45", "4.99"};
-        final Product fish = cut.mapTo(testData);
+        final ProductDto fish = cut.mapTo(testData);
 
         assertThat(fish)
                 .describedAs("Das Objekt sollte nicht null sein.")
                 .isNotNull()
                 .describedAs("Das Objekt sollte vom Typ Fish.class sein! Tatsächlicher Wert: " + fish.getClass())
-                .isInstanceOf(Fish.class);
+                .isInstanceOf(FishDto.class);
 
         assertThat(fish.getType())
                 .describedAs("Der typ sollte fisch sein! Tatsächlicher Wert: " + fish.getType())
@@ -47,16 +47,16 @@ class FishMapperStrategyTest {
                 .describedAs("Das Verfallsdatum sollte sechs Tage in der Zukunft liegen.")
                 .isEqualTo(LocalDate.now().plusDays(6));
 
-        final Fish castedFish = (Fish) fish;
+        final FishDto castedFishDto = (FishDto) fish;
 
-        assertThat(castedFish.getFishCondition())
+        assertThat(castedFishDto.getFishCondition())
                 .describedAs("Die FishConditon sollte FRESH sein")
                 .isEqualTo(FishCondition.FRESH);
-        assertThat(castedFish.getCatchDate())
+        assertThat(castedFishDto.getCatchDate())
                 .describedAs("Das Fangdatum des Fisches sollte einen Tag in der Vergangenheit liegen")
                 .isEqualTo(LocalDate.now().minusDays(1));
-        assertThat(castedFish.getBasePrice())
-                .describedAs("Der Grundpreis des Fisches sollte bei 4.99 liegen! Tatsächlicher Wert: " + castedFish.getBasePrice())
+        assertThat(castedFishDto.getBasePrice())
+                .describedAs("Der Grundpreis des Fisches sollte bei 4.99 liegen! Tatsächlicher Wert: " + castedFishDto.getBasePrice())
                 .isEqualTo(4.99);
     }
 }

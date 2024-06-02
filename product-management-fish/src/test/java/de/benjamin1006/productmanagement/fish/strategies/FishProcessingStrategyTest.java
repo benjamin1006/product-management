@@ -1,11 +1,11 @@
 package de.benjamin1006.productmanagement.fish.strategies;
 
-import de.benjamin1006.productmanagement.core.dto.Cheese;
-import de.benjamin1006.productmanagement.core.dto.Product;
-import de.benjamin1006.productmanagement.core.dto.Wine;
-import de.benjamin1006.productmanagement.core.interfaces.days.ICurrentDayProvider;
-import de.benjamin1006.productmanagement.fish.dto.Fish;
-import de.benjamin1006.productmanagement.fish.dto.FishBuilder;
+import de.benjamin1006.productmanagement.core.dto.CheeseDto;
+import de.benjamin1006.productmanagement.core.dto.ProductDto;
+import de.benjamin1006.productmanagement.core.dto.WineDto;
+import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
+import de.benjamin1006.productmanagement.fish.dto.FishDto;
+import de.benjamin1006.productmanagement.fish.dto.FishDtoBuilder;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,13 +32,13 @@ class FishProcessingStrategyTest {
 
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#removeProduct(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#removeProduct(ProductDto)}.
      * In dieser Methode wird mit einem Fisch innerhalb der Rahmenbedingungen getestet.
      * Von daher wird erwartet, dass die Methode false liefert und die Felder sich nicht ändern.
      */
     @Test
     void testRemoveProductGoodFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(40)
                 .withPrice(1.99)
@@ -63,13 +63,13 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#removeProduct(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#removeProduct(ProductDto)}.
      * In dieser Methode wird mit einem Fisch, der unterhalb der Qualitätsgrenze liegt getestet.
      * Von daher wird erwartet, dass die Methode trze liefert und die Felder sich nicht ändern.
      */
     @Test
     void testRemoveProductLowQualityFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(39)
                 .withPrice(1.99)
@@ -94,13 +94,13 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#removeProduct(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#removeProduct(ProductDto)}.
      * In dieser Methode wird mit einem Fisch, der sein Verfallsdatum überschritten hat, getestet.
      * Von daher wird erwartet, dass die Methode true liefert und die Felder sich nicht ändern.
      */
     @Test
     void testRemoveProductExpiredFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(41)
                 .withPrice(1.99)
@@ -125,13 +125,13 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#removeProduct(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#removeProduct(ProductDto)}.
      * In dieser Methode wird mit einem gefrorenen Fisch innerhalb der Rahmenbedingungen getestet.
      * Von daher wird erwartet, dass die Methode false liefert und die Felder sich nicht ändern.
      */
     @Test
     void testRemoveProductGoodFrozenFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(41)
                 .withPrice(1.99)
@@ -156,13 +156,13 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#removeProduct(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#removeProduct(ProductDto)}.
      * In dieser Methode wird mit einem gefrorenen Fisch, der sein Verfallsdatum überschritten hat, getestet.
      * Von daher wird erwartet, dass die Methode true liefert und die Felder sich nicht ändern.
      */
     @Test
     void testRemoveProductExpiredFrozenFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(41)
                 .withPrice(1.99)
@@ -187,13 +187,13 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#calculateQuality(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#calculateQuality(ProductDto)}.
      * In dieser Methode wird mit einem Fisch innerhalb der Rahmenbedingungen getestet.
      * Von daher wird erwartet, dass die Methode den Ursprungswert des Feldes Qualität um zwei verringert.
      */
     @Test
     void testCalculateQualityFreshFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(43)
                 .withPrice(1.99)
@@ -208,13 +208,13 @@ class FishProcessingStrategyTest {
                 .isEqualTo(41);
     }
     /**
-     * Test für die Methode {@link FishProcessingStrategy#calculateQuality(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#calculateQuality(ProductDto)}.
      * In dieser Methode wird mit einem Fisch getestet, der eine Qualität von 40 besitzt, diese sollte dazu führen,
      * dass er seinen Status auf gefroren ändert und auch die Felder price, basePrice und expirationDate sollten sich ändern.
      */
     @Test
     void testCalculateQualityFreshFishToFrozenFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(42)
                 .withPrice(1.99)
@@ -242,13 +242,13 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#calculateQuality(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#calculateQuality(ProductDto)}.
      * In dieser Methode wird mit einem gefrorenen Fisch getestet, der eine Qualität von 40 besitzt, diese sollte dazu führen,
      * dass sich seine Qualität nicht reduziert.
      */
     @Test
     void testCalculateQualityFrozenFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(40)
                 .withPrice(1.99)
@@ -264,12 +264,12 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#calculateDayPrice(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#calculateDayPrice(ProductDto)}.
      * Da es sich um fischen Frisch handelt, sollte sich das Feld price auf Grundlage der Formel basePrice + 0.1 * quality anpassen.
      */
     @Test
     void testCalculateDayPriceFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(40)
                 .withPrice(1.99)
@@ -285,12 +285,12 @@ class FishProcessingStrategyTest {
     }
 
     /**
-     * Test für die Methode {@link FishProcessingStrategy#calculateDayPrice(Product)}.
+     * Test für die Methode {@link FishProcessingStrategy#calculateDayPrice(ProductDto)}.
      * Da es sich um fischen Frisch handelt, sollte sich das Feld price um 0.05 erhöhen..
      */
     @Test
     void testCalculateDayPriceFrozenFish() {
-        final Fish product = FishBuilder.aFish()
+        final FishDto product = FishDtoBuilder.aFish()
                 .withType("fisch")
                 .withQuality(40)
                 .withPrice(1.99)
@@ -307,8 +307,8 @@ class FishProcessingStrategyTest {
 
     @Test
     void testIsCorrectTypeWithFish() {
-        final Fish fish = FishBuilder.aFish().build();
-        assertThat(cut.isCorrectType(fish))
+        final FishDto fishDto = FishDtoBuilder.aFish().build();
+        assertThat(cut.isCorrectType(fishDto))
                 .describedAs("Das es sich beim Objekt Typ um den Typ Fish handelt sollte die Methode true zurückgeben")
                 .isTrue();
     }
@@ -322,7 +322,7 @@ class FishProcessingStrategyTest {
 
     @Test
     void testIsCorrectTypeWithWine() {
-        assertThat(cut.isCorrectType(new Wine("wine", 5, 5.99, LocalDate.now())))
+        assertThat(cut.isCorrectType(new WineDto("wine", 5, 5.99, LocalDate.now())))
                 .describedAs("Das es sich beim Objekt Typ nicht um den Typ Fish handelt sollte die Methode false zurückgeben")
                 .isFalse();
     }
@@ -336,7 +336,7 @@ class FishProcessingStrategyTest {
 
     @Test
     void testIsCorrectTypeWithCheese() {
-        assertThat(cut.isCorrectType(new Cheese("käse", 30, LocalDate.now().plusDays(50), 4.99, 1.99)))
+        assertThat(cut.isCorrectType(new CheeseDto("käse", 30, LocalDate.now().plusDays(50), 4.99, 1.99)))
                 .describedAs("Das es sich beim Objekt Typ nicht um den Typ Fish handelt sollte die Methode false zurückgeben")
                 .isFalse();
     }

@@ -22,18 +22,6 @@
 
         <dependency>
             <groupId>de.benjamin1006</groupId>
-            <artifactId>product-management-core</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.benjamin1006</groupId>
-            <artifactId>product-management-observer</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.benjamin1006</groupId>
             <artifactId>product-management-fish</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
