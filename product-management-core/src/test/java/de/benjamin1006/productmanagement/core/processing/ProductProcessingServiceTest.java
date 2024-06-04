@@ -1,16 +1,19 @@
 package de.benjamin1006.productmanagement.core.processing;
 
 import de.benjamin1006.productmanagement.core.TestApplication;
-import de.benjamin1006.productmanagement.core.dto.ProductDto;
-import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.core.dto.CheeseDto;
+import de.benjamin1006.productmanagement.core.dto.ProductDto;
 import de.benjamin1006.productmanagement.core.dto.WineDto;
 import de.benjamin1006.productmanagement.core.observer.EventType;
 import de.benjamin1006.productmanagement.core.observer.manager.IEventManager;
+import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -27,6 +30,7 @@ import static org.mockito.Mockito.verify;
  * @author Benjamin Woitczyk
  */
 @SpringBootTest(classes = TestApplication.class)
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 class ProductProcessingServiceTest {
 
     @MockBean

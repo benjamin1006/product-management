@@ -18,6 +18,10 @@ public class WineDto extends ProductDto {
         this.entryDate = entryDate;
     }
 
+    public WineDto() {
+        super();
+    }
+
     public LocalDate getEntryDate() {
         return entryDate;
     }

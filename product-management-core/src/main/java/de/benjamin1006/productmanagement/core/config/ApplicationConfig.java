@@ -14,6 +14,8 @@ public class ApplicationConfig {
     private String csvFilePath;
     private boolean fishIsActive;
     private boolean csvImportActive;
+    private boolean sqlImportActive;
+
 
     public int getTimePeriod() {
         return timePeriod;
@@ -47,6 +49,14 @@ public class ApplicationConfig {
         this.csvImportActive = csvImportActive;
     }
 
+    public boolean isSqlImportActive() {
+        return sqlImportActive;
+    }
+
+    public void setSqlImportActive(boolean sqlImportActive) {
+        this.sqlImportActive = sqlImportActive;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", ApplicationConfig.class.getSimpleName() + "[", "]")
@@ -54,6 +64,7 @@ public class ApplicationConfig {
                 .add("csvFilePath='" + csvFilePath + "'")
                 .add("fishIsActive=" + fishIsActive)
                 .add("csvImportActive=" + csvImportActive)
+                .add("sqlImportActive=" + sqlImportActive)
                 .toString();
     }
 }

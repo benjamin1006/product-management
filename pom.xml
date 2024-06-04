@@ -27,5 +27,6 @@
         <module>product-management-core</module>
         <module>product-management-fish</module>
         <module>product-management-csv-import</module>
+        <module>product-management-sql</module>
     </modules>
 </project>

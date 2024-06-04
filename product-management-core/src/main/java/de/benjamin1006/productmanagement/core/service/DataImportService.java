@@ -24,7 +24,7 @@ public class DataImportService {
         for (IDataImport dataImport : dataImportList) {
             if (dataImport.isActive()) {
 
-                productDtoList = dataImport.importDataAndParseToProduct();
+                productDtoList.addAll(dataImport.importDataAndParseToProduct());
             }
         }
         return productDtoList;

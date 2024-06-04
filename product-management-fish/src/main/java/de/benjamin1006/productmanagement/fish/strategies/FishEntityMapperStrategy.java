@@ -1,10 +1,10 @@
 package de.benjamin1006.productmanagement.fish.strategies;
 
-import de.benjamin1006.productmanagement.core.component.strategy.ICsvMapperStrategy;
+import de.benjamin1006.productmanagement.core.component.strategy.IEntityMapperStrategy;
 import de.benjamin1006.productmanagement.core.dto.ProductDto;
+import de.benjamin1006.productmanagement.core.repository.ProductEntity;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import de.benjamin1006.productmanagement.fish.dto.FishDtoBuilder;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,23 +13,21 @@ import java.time.LocalDate;
  * @author Benjamin Woitczyk
  */
 @Component
-@ConditionalOnProperty(prefix = "product-management", name = "fish-is-active", havingValue = "true", matchIfMissing = false)
-public class FishMapperStrategy implements ICsvMapperStrategy {
-
+public class FishEntityMapperStrategy implements IEntityMapperStrategy {
     @Override
     public String getMapperType() {
         return "fisch";
     }
 
     @Override
-    public ProductDto mapTo(String[] line) {
-        final String type = line[0];
-        final int quality = Integer.parseInt(line[1]);
-        final double price = Double.parseDouble(line[2]);
+    public ProductDto mapEntityToDto(ProductEntity entity) {
+
+        final double price = entity.getPrice();
+        final int quality = entity.getQuality();
         final LocalDate catchDate = FishDtoUtil.calculateCatchDate();
         final LocalDate expirationDate = FishDtoUtil.calculateExpirationDate(catchDate);
         return FishDtoBuilder.aFish()
-                .withType(type)
+                .withType(entity.getType())
                 .withQuality(quality)
                 .withBasePrice(price)
                 .withCatchDate(catchDate)
