@@ -5,6 +5,7 @@ import de.benjamin1006.productmanagement.core.dto.ProductDto;
 import de.benjamin1006.productmanagement.core.repository.ProductEntity;
 import de.benjamin1006.productmanagement.fish.dto.FishCondition;
 import de.benjamin1006.productmanagement.fish.dto.FishDtoBuilder;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
  * @author Benjamin Woitczyk
  */
 @Component
+@ConditionalOnProperty(prefix = "product-management", name = "fish-is-active", havingValue = "true", matchIfMissing = false)
 public class FishEntityMapperStrategy implements IEntityMapperStrategy {
     @Override
     public String getMapperType() {

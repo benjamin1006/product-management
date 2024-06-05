@@ -24,8 +24,8 @@ public class UserInputService {
      */
     public int getUserInput() {
         while (true) {
-            log.info("Info: Es werden nur ganze Zahlen akzeptiert, mit einer 0 wird der Programmablauf beendet.");
             log.info("Bitte geben Sie die Anzahl der Tage an, die Sie simulieren möchten!");
+            log.info("Info: Es werden nur ganze Zahlen akzeptiert, mit einer 0 wird der Programmablauf beendet.");
 
             if (!scanner.hasNextInt()) {
                 log.info("Bitte geben Sie nur ganze Zahlen ein und bestätigen Sie mit der ENTER Taste! (Beispiel: 5)");
