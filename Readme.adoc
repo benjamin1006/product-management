@@ -1,17 +1,51 @@
 = product-management
 
-== Erweiterung Modul Fish
-Um die Anwendung auch Fische verarbeiten zu lassen, muss die property product-management.fish true gesetzt haben.
-Ist sie auf false werden Fische nicht verarbeitet
+== Beschreibung
+Anwendung zum Einlesen und Verarbeiten von Produkten.
+Die Produkte können über eine .csv Datei und/oder eine Datenbank Anbindung eingelesen. Sie werden im Anschluss für eine Anzahl
+von Tagen mithilfe der xref:verarbeitungsregeln[Verarbeitungsregeln] simuliert.
 
-[source,properties]
-----
-product-management.fish=true
-----
+Die Anzahl der Tage ist dabei frei wählbar, sie kann über eine property konfiguriert werden.
 
+Die Anwendung kann ebenfalls in einem interaktiven Modus ausgeführt werden (xref:property[Property Konfigurationen]).
+Dort wird der User gebeten die Anzahl der Tage, für die er die Regeln anwenden möchte einzugeben.
+Dies kann beliebig oft wiederholt werden.
 
+Die Ausgabe der verarbeiteten Produkte kann erfolgt über die Konsole.
 
+[[property]]
+== Property Konfigurationen
+In der nachfolgenden Tabelle sind alle möglichen Einstellung/Erweiterungen über property Dateien aufgelistet.
+[cols="3*"]
+|===
+| Property | Values | Beschreibung
+| product-management.interactive-mode
+| true, false
+| true: Schaltet den interaktiven Modus an, der User wird dazu aufgefordert mitzuteilen für wie viele Tage er verarbeiten will
+| product-management.time-period
+| Ganze Zahlen
+| Die Anzahl der Tage die simuliert werden soll, wird nur benutzt, wenn der interaktive Modus aus ist.
+| product-management.csv-file-path:
+| String
+| Dateipfad zu einer .csv Datei mit Produkten, diese werden eingelesen.
+| product-management.fish-is-active
+| true, false
+| true: Die Anwendungen verwaltet auch Produkte vom Typ Fisch
+| product-management.csv-import-active
+| true, false
+| true: der CSV-Import wird benutzt.
 
+CSV und Sql können gemeinsam benutzt werden.
+| product-management.sql-import-active
+| true, false
+| true: der Sql-Import wird benutzt,
+
+Achtung: Eine Datenbank sollte erreichbar sein. Url, User und Passwort sind über die application.yml zu konfigurieren.
+
+CSV und Sql können gemeinsam benutzt werden.
+|===
+
+[[verarbeitungsregeln]]
 == Verarbeitungsregeln
 [cols="4*"]
 |===
