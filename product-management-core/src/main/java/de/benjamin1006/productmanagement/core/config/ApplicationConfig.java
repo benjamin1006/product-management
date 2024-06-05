@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.StringJoiner;
 
 /**
+ * Sammlung aller Parameter der Anwendung product-management.
  * @author Benjamin Woitczyk
  */
 @ConfigurationProperties(prefix = "product-management")
@@ -15,7 +16,6 @@ public class ApplicationConfig {
     private boolean fishIsActive;
     private boolean csvImportActive;
     private boolean sqlImportActive;
-
 
     public int getTimePeriod() {
         return timePeriod;

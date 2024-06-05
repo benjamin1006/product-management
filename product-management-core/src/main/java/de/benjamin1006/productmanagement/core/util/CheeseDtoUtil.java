@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
+ * Utility Klassen für das {@link de.benjamin1006.productmanagement.core.dto.CheeseDto}.
  * @author Benjamin Woitczyk
  */
 public class CheeseDtoUtil {

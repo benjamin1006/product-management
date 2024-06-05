@@ -10,7 +10,12 @@ import java.util.List;
  * @author Benjamin Woitczyk
  */
 public interface IDataImport {
+    /**
+     * Gibt an ob, die jeweilige Implementierung aktiv ist.
+     * @return true, wenn sie aktiv ist
+     */
     boolean isActive();
+
     /**
      * Diese Methode importiert Daten und parsed diese dann zu einer Liste vom Typ Product.
      * Achtung diese werden nicht gefiltert.

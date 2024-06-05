@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * Implementierung des {@link IDataImport} Interfaces, für den Import Typ SQL.
  * @author Benjamin Woitczyk
  */
 public class SqlImportService implements IDataImport {
@@ -31,6 +32,11 @@ public class SqlImportService implements IDataImport {
     }
 
     @Override
+    public boolean isActive() {
+        return applicationConfig.isSqlImportActive();
+    }
+
+    @Override
     public List<ProductDto> importDataAndParseToProduct() {
 
         final List<ProductEntity> all = productRepository.findAll();
@@ -43,11 +49,6 @@ public class SqlImportService implements IDataImport {
                                 () -> log.info("Die aktuelle Zeile enthält ein Produkt das bisher nicht bekannt ist, sie wird übersprungen! {}", productEntity)));
 
         return productList;
-    }
-
-    @Override
-    public boolean isActive() {
-        return applicationConfig.isSqlImportActive();
     }
 
     private Optional<ProductDto> mapToProduct(ProductEntity productEntity) {

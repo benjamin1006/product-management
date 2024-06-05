@@ -1,5 +1,6 @@
 package de.benjamin1006.productmanagement.sql;
 
+import de.benjamin1006.productmanagement.core.component.IDataImport;
 import de.benjamin1006.productmanagement.core.component.strategy.IEntityMapperStrategy;
 import de.benjamin1006.productmanagement.core.config.ApplicationConfig;
 import de.benjamin1006.productmanagement.core.repository.ProductRepository;
@@ -13,6 +14,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.List;
 
 /**
+ * Mit dieser ConfigKlasse, werden die benötigten Einstellungen für die Datenbank bereitstellt.
+ * Um aktiv zu werden, muss die property product-management.sql-import-active = true sein.
+ * Ist dies der Fall, wird die Anwendung nach Repositories und Entities durchsucht.
+ * Zusätzlich wird ein Bean vom {@link SqlImportService} bereitgestellt.
  * @author Benjamin Woitczyk
  */
 @Configuration
@@ -32,7 +37,7 @@ public class SqlConfig {
     }
 
     @Bean
-    public SqlImportService createSqlImportService() {
+    public IDataImport createSqlImportService() {
         return new SqlImportService(entityToDtoMappers, productRepository, applicationConfig);
     }
 }

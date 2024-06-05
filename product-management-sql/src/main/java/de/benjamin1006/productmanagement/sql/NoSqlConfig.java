@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * Diese Klasse steuert die Konfiguration für die Verbindung zur Datenbank.
+ * Sollte die Property 'product-management.sql-import-active false, brauchen wir keine Verbindung zur Datenbank.
+ * Deswegen wird die Spring Boot Auto Konfiguration ausgeschlossen.
  * @author Benjamin Woitczyk
  */
 @Configuration
