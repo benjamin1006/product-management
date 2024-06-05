@@ -1,19 +1,17 @@
 package de.benjamin1006.productmanagement.core.processing;
 
 import de.benjamin1006.productmanagement.core.dto.ProductDto;
-import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import de.benjamin1006.productmanagement.core.exception.ProductNotFoundException;
 import de.benjamin1006.productmanagement.core.observer.manager.IEventManager;
+import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import static de.benjamin1006.productmanagement.core.observer.EventType.REMOVE;
-import static de.benjamin1006.productmanagement.core.observer.EventType.UPDATE;
+import static de.benjamin1006.productmanagement.core.observer.EventType.*;
 
 /**
  * Service für die Verarbeitung von Produkten, nutzt das StrategyPattern für die Verarbeitung({@link IProductProcessingStrategy}
@@ -38,15 +36,16 @@ public class ProductProcessingService {
         this.currentDayProvider = currentDayProvider;
     }
 
-    public void processProductsForTimePeriod(List<ProductDto> productDtoList, int timePeriod) {
+    public List<ProductDto> processProductsForTimePeriod(List<ProductDto> productDtoList, int timePeriod) {
 
         log.info("Verarbeitungslogik aller Produkte wird für einen Zeitraum von {} Tagen angewandt", timePeriod);
         for (int i = 0; i < timePeriod; i++) {
-            currentDayProvider.setCurrentDay(LocalDate.now().plusDays(i + 1L));
+            productManagementEventManager.notifyNewDayObservers(NEW_DAY, currentDayProvider.getCurrentDay().plusDays(1));
+            currentDayProvider.setCurrentDay(currentDayProvider.getCurrentDay().plusDays(1L));
             productDtoList = processProductsForOneDay(productDtoList);
         }
 
-        productManagementEventManager.notifyProductListObservers(UPDATE, productDtoList);
+        return productDtoList;
     }
 
     /**

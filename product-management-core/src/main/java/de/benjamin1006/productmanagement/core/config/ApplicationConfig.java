@@ -16,6 +16,7 @@ public class ApplicationConfig {
     private boolean fishIsActive;
     private boolean csvImportActive;
     private boolean sqlImportActive;
+    private boolean interactiveMode;
 
     public int getTimePeriod() {
         return timePeriod;
@@ -57,6 +58,14 @@ public class ApplicationConfig {
         this.sqlImportActive = sqlImportActive;
     }
 
+    public boolean isInteractiveMode() {
+        return interactiveMode;
+    }
+
+    public void setInteractiveMode(boolean interactiveMode) {
+        this.interactiveMode = interactiveMode;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", ApplicationConfig.class.getSimpleName() + "[", "]")
@@ -65,6 +74,7 @@ public class ApplicationConfig {
                 .add("fishIsActive=" + fishIsActive)
                 .add("csvImportActive=" + csvImportActive)
                 .add("sqlImportActive=" + sqlImportActive)
+                .add("interacviteMode=" + interactiveMode)
                 .toString();
     }
 }

@@ -10,6 +10,7 @@ spring:
     hibernate:
       ddl-auto: update
 product-management:
+  interactive-mode: true
   time-period: 20
   csv-file-path: product-management-solution/src/main/resources/products.csv
   fish-is-active: true

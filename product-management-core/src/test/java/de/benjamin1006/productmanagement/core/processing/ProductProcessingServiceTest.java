@@ -8,8 +8,6 @@ import de.benjamin1006.productmanagement.core.observer.EventType;
 import de.benjamin1006.productmanagement.core.observer.manager.IEventManager;
 import de.benjamin1006.productmanagement.core.processing.days.ICurrentDayProvider;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -21,7 +19,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -39,8 +36,6 @@ class ProductProcessingServiceTest {
     private ProductProcessingService cut;
     @Autowired
     private ICurrentDayProvider currentDayProvider;
-    @Captor
-    private ArgumentCaptor<List<ProductDto>> captor;
 
     private final LocalDate aktuellerTag = LocalDate.now();
 
@@ -239,9 +234,8 @@ class ProductProcessingServiceTest {
 
         final List<ProductDto> productDtoList = List.of(wine, lowQualityCheese, goodCheese, expiredCheese);
 
-        cut.processProductsForTimePeriod(productDtoList, timePeriod);
+        final List<ProductDto> proccesdProductDtoList = cut.processProductsForTimePeriod(productDtoList, timePeriod);
 
-        verify(eventManager, times(1)).notifyProductListObservers(any(), captor.capture());
         //Der Wein sollte jeden Tag des Verarbeitungszeitraums geupdatet werden und er sollte nicht entfernt werden.
         verify(eventManager, times(20)).notifyProductObservers(EventType.UPDATE, wine);
         verify(eventManager, times(0)).notifyProductObservers(EventType.REMOVE, wine);
@@ -256,15 +250,13 @@ class ProductProcessingServiceTest {
         verify(eventManager, times(1)).notifyProductObservers(EventType.REMOVE, expiredCheese);
 
 
-        List<ProductDto> capturedList = captor.getValue();
-        //Nun wird die Liste die mithilfe des Capots abgefangen wurde überprüft.
-        assertThat(capturedList)
-                .describedAs("Die Liste sollte aus zwei Objekten bestehen! Tatsächlicher Wert: " + capturedList.size())
+        assertThat(proccesdProductDtoList)
+                .describedAs("Die Liste sollte aus zwei Objekten bestehen! Tatsächlicher Wert: " + proccesdProductDtoList.size())
                 .hasSize(2)
                 .describedAs("Die Liste sollte aus den Objekten wine und goodCheese bestehen.")
                 .contains(wine, goodCheese);
 
-        final ProductDto updatedWine = capturedList.get(0);
+        final ProductDto updatedWine = proccesdProductDtoList.get(0);
         assertThat(updatedWine.getQuality())
                 .describedAs("Die Qualität des Weines sollte um zwei Punkte gestiegen sein. Ausgangs Wert: " + startingQualityWine)
                 .isEqualTo(12);
@@ -272,7 +264,7 @@ class ProductProcessingServiceTest {
                 .describedAs("Der Preis des Weines sollte sich nicht verändert haben. AusgangsWert: " + startingPriceWine)
                 .isEqualTo(startingPriceWine);
 
-        final ProductDto updatedCheese = capturedList.get(1);
+        final ProductDto updatedCheese = proccesdProductDtoList.get(1);
         assertThat(updatedCheese.getQuality())
                 .describedAs("Die Qualität des Käses sollte um zwanzig Punkte gesunken sein. Ausgangs Wert: " + startingQualityGoodCheese)
                 .isEqualTo(30);
