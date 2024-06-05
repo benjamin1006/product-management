@@ -80,7 +80,7 @@ public class ExecutionService {
         while (timePeriod != 0) {
             filteredProductList = productProcessingService.processProductsForTimePeriod(filteredProductList, timePeriod);
 
-            if (!applicationConfig.isInteractiveMode()) {
+            if (!applicationConfig.isInteractiveMode() || filteredProductList.isEmpty()) {
                 break;
             }
 

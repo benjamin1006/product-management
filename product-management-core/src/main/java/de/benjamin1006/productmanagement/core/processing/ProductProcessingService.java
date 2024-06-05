@@ -43,7 +43,14 @@ public class ProductProcessingService {
             productManagementEventManager.notifyNewDayObservers(NEW_DAY, currentDayProvider.getCurrentDay().plusDays(1));
             currentDayProvider.setCurrentDay(currentDayProvider.getCurrentDay().plusDays(1L));
             productDtoList = processProductsForOneDay(productDtoList);
+
+            if (productDtoList.isEmpty()) {
+                log.info("Es wurden alle Produkte verarbeitet");
+                break;
+            }
         }
+
+
 
         return productDtoList;
     }
